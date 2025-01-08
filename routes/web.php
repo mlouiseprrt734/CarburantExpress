@@ -8,6 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/mentions-legales', function () {
+    return view('mentions-legales');
+});
+
 Route::get('/fuel-prices', [FuelPriceController::class, 'getFuelPrices']);
 Route::post('/recherche', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
 

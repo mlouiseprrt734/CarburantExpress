@@ -81,180 +81,85 @@
                     </header>
                     <!-- ========== END HEADER ========== -->
 
-                    <main class="mt-6">
-                        <!-- Hero -->
-                        <div class="relative overflow-hidden">
-                            <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
-                                <div class="text-center">
-                                    <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-neutral-200">
-                                        Comparez les prix des carburants
-                                    </h1>
+                    <main class="mt-10 ml-8">
+                        <div class="container">
+                            <h1 class="mb-14 mt-14 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                                Mentions légales
+                            </h1>
 
-                                    <p class="mt-3 text-gray-600 dark:text-neutral-400">
-                                        Sélectionnez la ville de votre choix et découvrez la station essence la moins chère.
+                            <section>
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">1. Informations générales</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Le présent site web, accessible à l'adresse {{ url('/') }}, est édité par :
                                     </p>
-
-                                    <div class="relative z-10 p-5 mt-5 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-gray-900/20">
-                                        <form action="/recherche" method="post" class="space-y-4">
-                                            @csrf
-                                            <div>
-                                                <label for="ville" class="block text-sm font-medium text-gray-700 dark:text-white">
-                                                    Ville
-                                                </label>
-                                                <div class="relative mt-2">
-                                                    <input type="text" name="ville" id="ville" class="py-3 px-4 block w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Entrez une ville"/>
-                                                    <span class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <fieldset class="space-y-2">
-                                                <legend class="text-sm font-medium text-gray-700 dark:text-white">
-                                                    Type de Carburant
-                                                </legend>
-                                                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="1" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">Gazole</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="2" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP95</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="3" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E10</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="4" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP98</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="5" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">GPLc</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="6" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E85</span>
-                                                    </label>
-                                                </div>
-                                            </fieldset>
-
-                                            <!-- Submit Button -->
-                                            <div class="pt-4">
-                                                <button
-                                                    type="submit"
-                                                    class="w-full py-3 px-6 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-900"
-                                                >
-                                                    <i class="fas fa-search mr-2"></i> Rechercher
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        <strong>CarburantExpress</strong><br>
+                                        Adresse : 2 Rue Adrien Recouvreur, 49000 Angers<br>
+                                        Téléphone : 02 41 80 96 11<br>
+                                        Email : contact@lycee-chevrollier.fr<br>
+                                        Responsable de la publication : Porret Marie-Louise
+                                    </p>
                                 </div>
-                            </div>
-                            <div>
-                                <div id="map" style="height: 400px; width: 100%; margin-top:24px">
+
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">2. Hébergement</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Le site est hébergé par :
+                                    </p>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Hébergeur : Lycée Chevrollier<br>
+                                        Adresse : 2 Rue Adrien Recouvreur, 49000 Angers<br>
+                                        Téléphone : 02 41 80 96 11
+                                    </p>
                                 </div>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        var map = L.map('map').setView([47.466671, -0.55], 13);
 
-                                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                            maxZoom: 19,
-                                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                        }).addTo(map);
-                                    });
-                
-                                    $fuelPrices.forEach(element => {
-                                        var marker = L.marker([element['latitude'], element['longitude']]).addTo(map);
-                                    });
-                                </script>
-
-
-                                <div class="flex flex-col">
-                                    <div class="-m-1.5 overflow-x-auto">
-                                        <div class="p-1.5 min-w-full inline-block align-middle">
-                                            <div class="overflow-hidden">
-                                                <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-                                                    <thead>
-                                                        <tr>
-                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Station</th>
-                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Carburant et Prix</th>
-                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Service</th>
-                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Horaires</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                                                        @if(isset($fuelPrices) && !empty($fuelPrices))
-                                                            @foreach ($fuelPrices as $station)
-                                                                <tr class="hover:bg-gray-100 dark:hover:bg-neutral-700">
-                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $station['adresse'] }}, {{ $station['ville'] }}</td>
-                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                                                @if(isset($station['prix']))
-                                                                    <ul>
-                                                                        @foreach (json_decode($station['prix']) as $prix)
-                                                                            <li>{{ $prix->{'@nom'} }}: {{ $prix->{'@valeur'} }} EUR</li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @else
-                                                                    N/A
-                                                                @endif
-                                                                </td>
-                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                                                @if(isset($station['services_service']))
-                                                                    <ul>
-                                                                        @foreach ($station['services_service'] as $service)
-                                                                            <li>{{ $service }}</li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @else
-                                                                    N/A
-                                                                @endif
-                                                                </td>
-                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                                                @if(isset($station['horaires']))
-                                                                    @php
-                                                                        $horaires = json_decode($station['horaires'], true);
-                                                                    @endphp
-                                                                    
-                                                                    @if(isset($horaires['jour']))
-                                                                        <ul>
-                                                                            @foreach ($horaires['jour'] as $jour)
-                                                                                <li>
-                                                                                    {{ $jour['@nom'] }} : 
-                                                                                    @if(isset($jour['horaire']['@ouverture']) && isset($jour['horaire']['@fermeture']))
-                                                                                        {{ $jour['horaire']['@ouverture'] }} - {{ $jour['horaire']['@fermeture'] }}
-                                                                                    @else
-                                                                                        Fermé
-                                                                                    @endif
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    @else
-                                                                        N/A
-                                                                    @endif
-                                                                @else
-                                                                    N/A
-                                                                @endif
-                                                            </td>
-
-                                                                </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        @else
-                                                            <p>Prix des carburants non disponible.</p>
-                                                        @endif
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">3. Données personnelles</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée, vous disposez des droits suivants concernant vos données personnelles :
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-500 dark:text-gray-400">
+                                        <li><strong>Droit d'accès :</strong> Vous pouvez demander l'accès aux données vous concernant.</li>
+                                        <li><strong>Droit de rectification :</strong> Vous pouvez demander la modification de vos données personnelles.</li>
+                                        <li><strong>Droit à l'effacement :</strong> Vous pouvez demander la suppression de vos données personnelles.</li>
+                                        <li><strong>Droit à la portabilité :</strong> Vous pouvez demander la transmission de vos données dans un format structuré et couramment utilisé.</li>
+                                        <li><strong>Droit d'opposition :</strong> Vous pouvez vous opposer à l'utilisation de vos données personnelles.</li>
+                                    </ul>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Les données personnelles que vous fournissez lors de la création de votre compte (nom, adresse email, ville préférée, carburant préféré) sont utilisées uniquement dans le cadre de la gestion de votre compte et de l'amélioration de nos services. Ces données ne sont en aucun cas revendues à des tiers.
+                                    </p>
                                 </div>
-                            </div>
+
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">4. Cookies</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Le site n'utilise que les cookies nécessaires au bon fonctionnement de ce dernier.
+                                    </p>
+                                </div>
+
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">5. Propriété intellectuelle</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Le contenu du site, y compris les textes, images, logos et autres éléments, est protégé par les lois sur la propriété intellectuelle. Toute reproduction, distribution ou utilisation non autorisée est interdite.
+                                    </p>
+                                </div>
+
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">6. Responsabilité</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Le site ne saurait être tenu responsable des erreurs, omissions ou imprécisions qui pourraient apparaître sur le site. L'accès et l'utilisation du site se font sous votre propre responsabilité.
+                                    </p>
+                                </div>
+
+                                <div class="mb-8">
+                                    <h2 class="text-xl font-extrabold dark:text-white">7. Loi applicable</h2>
+                                    <p class="mb-3 text-gray-500 dark:text-gray-400">
+                                        Les présentes mentions légales sont régies par la loi française. Tout litige relatif à l'utilisation du site sera soumis à la compétence des tribunaux français.
+                                    </p>
+                                </div>
+                            </section>
                         </div>
-                        <!-- End Hero -->
                     </main>
 
                     <footer class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
