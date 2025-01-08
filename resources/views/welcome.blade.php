@@ -94,22 +94,64 @@
                                         Sélectionnez la ville de votre choix et découvrez la station essence la moins chère.
                                     </p>
 
-                                    <div class="mt-7 sm:mt-12 mx-auto max-w-xl relative">
-                                        <!-- Form -->
-                                        <form action="/recherche" method="post">
+                                    <div class="relative z-10 p-5 mt-5 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-gray-900/20">
+                                        <form action="/recherche" method="post" class="space-y-4">
                                             @csrf
-                                            <div class="relative z-10 flex gap-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-gray-900/20">
-                                                <div class="w-full">
-                                                    <label for="hs-search-article-1" class="block text-sm text-gray-700 font-medium dark:text-white"><span class="sr-only">Ville ou Code postal</span></label>
-                                                    <input type="text" name="ville" id="ville" class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Ville ou Code postal" required>
-                                                </div>
-                                                <div>
-                                                    <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Rechercher</button>
+                                            <div>
+                                                <label for="ville" class="block text-sm font-medium text-gray-700 dark:text-white">
+                                                    Ville
+                                                </label>
+                                                <div class="relative mt-2">
+                                                    <input type="text" name="ville" id="ville" class="py-3 px-4 block w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Entrez une ville"/>
+                                                    <span class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                    </span>
                                                 </div>
                                             </div>
+                                            <fieldset class="space-y-2">
+                                                <legend class="text-sm font-medium text-gray-700 dark:text-white">
+                                                    Type de Carburant
+                                                </legend>
+                                                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="1" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">Gazole</span>
+                                                    </label>
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="2" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP95</span>
+                                                    </label>
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="3" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E10</span>
+                                                    </label>
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="4" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP98</span>
+                                                    </label>
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="5" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">GPLc</span>
+                                                    </label>
+                                                    <label class="flex items-center space-x-2">
+                                                        <input type="radio" name="carburant" value="6" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E85</span>
+                                                    </label>
+                                                </div>
+                                            </fieldset>
+
+                                            <!-- Submit Button -->
+                                            <div class="pt-4">
+                                                <button
+                                                    type="submit"
+                                                    class="w-full py-3 px-6 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-900"
+                                                >
+                                                    <i class="fas fa-search mr-2"></i> Rechercher
+                                                </button>
+                                            </div>
                                         </form>
-                                        <!-- End Form -->
                                     </div>
+
                                 </div>
                             </div>
                             <div>
@@ -124,7 +166,12 @@
                                             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                         }).addTo(map);
                                     });
+                
+                                    $fuelPrices.forEach(element => {
+                                        var marker = L.marker([element['latitude'], element['longitude']]).addTo(map);
+                                    });
                                 </script>
+
 
                                 <div class="flex flex-col">
                                     <div class="-m-1.5 overflow-x-auto">
@@ -135,7 +182,8 @@
                                                         <tr>
                                                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Station</th>
                                                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Carburant et Prix</th>
-                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Distance</th>
+                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Service</th>
+                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Horaires</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
@@ -154,8 +202,44 @@
                                                                     N/A
                                                                 @endif
                                                                 </td>
-                                                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Delete</button>
+                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                                                                @if(isset($station['services_service']))
+                                                                    <ul>
+                                                                        @foreach ($station['services_service'] as $service)
+                                                                            <li>{{ $service }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @else
+                                                                    N/A
+                                                                @endif
+                                                                </td>
+                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                                                                @if(isset($station['horaires']))
+                                                                    @php
+                                                                        $horaires = json_decode($station['horaires'], true);
+                                                                    @endphp
+                                                                    
+                                                                    @if(isset($horaires['jour']))
+                                                                        <ul>
+                                                                            @foreach ($horaires['jour'] as $jour)
+                                                                                <li>
+                                                                                    {{ $jour['@nom'] }} : 
+                                                                                    @if(isset($jour['horaire']['@ouverture']) && isset($jour['horaire']['@fermeture']))
+                                                                                        {{ $jour['horaire']['@ouverture'] }} - {{ $jour['horaire']['@fermeture'] }}
+                                                                                    @else
+                                                                                        Fermé
+                                                                                    @endif
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @else
+                                                                        N/A
+                                                                    @endif
+                                                                @else
+                                                                    N/A
+                                                                @endif
+                                                            </td>
+
                                                                 </td>
                                                                 </tr>
                                                             @endforeach

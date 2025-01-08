@@ -33,11 +33,35 @@ class FuelPriceController extends Controller
 
     public function searchFuelPrices(Request $request)
     {
+        $result = [];
         $ville = $request->input('ville');
+        $carburant = $request->input('carburant');
+        switch($carburant) {
+            case '1':
+                $carburant = 'Gazole';
+                break;
+            case '2':
+                $carburant = 'SP95';
+                break;
+            case '3':
+                $carburant = 'E10';
+                break;
+            case '4':
+                $carburant = 'SP98';
+                break;
+            case '5':
+                $carburant = 'GPLc';
+                break;
+            case '6':
+                $carburant = 'E85';
+                break;
+            default:
+                $carburant = 'Gazole';
+        }
 
-        // api get request with where ville
+        // api get request with where ville and carburant
         $response = Http::get('https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records', [
-            'where' => "ville='$ville'"
+            'where' => "ville=\"$ville\" AND carburants_disponibles=\"$carburant\"",
         ]);
 
         if ($response->successful()) {
@@ -46,7 +70,14 @@ class FuelPriceController extends Controller
             // data validation
             if (isset($data['results']) && !empty($data['results'])) {
                 $fuelPrices = $data['results'];
-                return view('welcome', ['fuelPrices' => $fuelPrices]);
+
+                foreach($fuelPrices as $fuelPrice) {
+                    if($fuelPrice[strtolower($carburant).'_prix'] != null) {
+                        $result[] = $fuelPrice;;
+                    }
+                }
+
+                return view('welcome', ['fuelPrices' => $result]);
             } else {
                 // if no data
                 return view('welcome', ['error' => 'Prix des carburants non disponible.']);
