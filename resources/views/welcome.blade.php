@@ -94,64 +94,28 @@
                                         Sélectionnez la ville de votre choix et découvrez la station essence la moins chère.
                                     </p>
 
-                                    <div class="relative z-10 p-5 mt-5 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-gray-900/20">
-                                        <form action="/recherche" method="post" class="space-y-4">
-                                            @csrf
-                                            <div>
-                                                <label for="ville" class="block text-sm font-medium text-gray-700 dark:text-white">
-                                                    Ville
-                                                </label>
-                                                <div class="relative mt-2">
-                                                    <input type="text" name="ville" id="ville" class="py-3 px-4 block w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Entrez une ville"/>
-                                                    <span class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
-                                                        <i class="fas fa-map-marker-alt"></i>
-                                                    </span>
+      
+                                    <div class="bg-white border rounded-xl mt-20 shadow-sm sm:flex dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
+                                        <div class="shrink-0 relative rounded-t-xl overflow-hidden sm:rounded-s-xl sm:max-w-60 md:rounded-se-none md:max-w-xs">
+                                            <img class="w-full h-auto object-cover" src="{{ asset('images/fuel_image.jpg') }}" alt="Card Image">
+                                        </div>
+                                        <div class="flex flex-wrap">
+                                            <div class="p-4 flex flex-col sm:p-7">
+                                                <p class="mt-1 text-gray-500 dark:text-neutral-400">
+                                                    Créez votre compte pour bénéficier des fonctionnalités.
+                                                </p>
+                                                <div class="pt-4">
+                                                    <a href="{{ route('login') }}" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                                                        Log in
+                                                    </a>
+                                                    <a href="{{ route('register') }}" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                        Register
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <fieldset class="space-y-2">
-                                                <legend class="text-sm font-medium text-gray-700 dark:text-white">
-                                                    Type de Carburant
-                                                </legend>
-                                                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="1" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">Gazole</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="2" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP95</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="3" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E10</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="4" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">SP98</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="5" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">GPLc</span>
-                                                    </label>
-                                                    <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="6" class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
-                                                        <span class="text-sm text-gray-500 dark:text-neutral-400">E85</span>
-                                                    </label>
-                                                </div>
-                                            </fieldset>
-
-                                            <!-- Submit Button -->
-                                            <div class="pt-4">
-                                                <button
-                                                    type="submit"
-                                                    class="w-full py-3 px-6 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-900"
-                                                >
-                                                    <i class="fas fa-search mr-2"></i> Rechercher
-                                                </button>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+
                             </div>
                         </div>
                         <!-- End Hero -->
