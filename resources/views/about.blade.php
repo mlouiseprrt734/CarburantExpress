@@ -82,9 +82,38 @@
                     <!-- ========== END HEADER ========== -->
 
                     <main class="mt-6">
-                        <div class="max-w-2xl mx-auto">
-                            <h1 class="text-2xl font-semibold text-black dark:text-white">A propos</h1>
-                            <p class="mt-4 text-sm text-gray-500 dark:text-neutral-500">CarburantExpress est un site web qui vous permet de trouver les stations-service les moins chères autour de vous. Vous pouvez également consulter les prix des carburants en temps réel.</p>
+                        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center">
+                                <h1 class="text-3xl font-bold text-black dark:text-white mb-6">À propos de CarburantExpress</h1>
+                                <img src="{{ asset('images/fuel_image.jpg') }}" alt="Station service" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8">
+                            </div>
+                            
+                            <div class="space-y-6 text-gray-600 dark:text-gray-300">
+                                <p class="text-lg">
+                                    CarburantExpress est votre compagnon idéal pour trouver les meilleurs prix de carburant dans votre région.
+                                </p>
+
+                                <div class="grid md:grid-cols-2 gap-8 mt-8">
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                                        <h2 class="text-xl font-semibold text-black dark:text-white mb-4">Notre Mission</h2>
+                                        <p>Nous nous engageons à vous aider à économiser sur vos dépenses de carburant en vous fournissant des informations en temps réel sur les prix pratiqués dans les stations-service près de chez vous.</p>
+                                    </div>
+
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                                        <h2 class="text-xl font-semibold text-black dark:text-white mb-4">Nos Services</h2>
+                                        <ul class="list-disc list-inside space-y-2">
+                                            <li>Comparaison des prix en temps réel</li>
+                                            <li>Localisation des stations les plus proches</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                                    <h2 class="text-xl font-semibold text-black dark:text-white mb-4">Comment ça marche ?</h2>
+                                    <p class="mb-4">Notre plateforme récupère et analyse en permanence les données de prix des carburants relevées par le gouvernement pour vous offrir les informations les plus précises et actualisées.</p>
+                                    <p>Créez votre compte gratuitement pour accéder à toutes nos fonctionnalités et commencez à économiser dès aujourd'hui !</p>
+                                </div>
+                            </div>
                         </div>
                     </main>
 

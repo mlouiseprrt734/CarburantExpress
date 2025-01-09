@@ -99,7 +99,7 @@
                                         <div class="shrink-0 relative rounded-t-xl overflow-hidden sm:rounded-s-xl sm:max-w-60 md:rounded-se-none md:max-w-xs">
                                             <img class="w-full h-auto object-cover" src="{{ asset('images/fuel_image.jpg') }}" alt="Card Image">
                                         </div>
-                                        <div class="flex flex-wrap">
+                                        <div class="flex flex-wrap p-4 sm:p-7">
                                             <div class="p-4 flex flex-col sm:p-7">
                                                 <p class="mt-1 text-gray-500 dark:text-neutral-400">
                                                     Créez votre compte pour bénéficier des fonctionnalités.
@@ -115,7 +115,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                             </div>
                         </div>
                         <!-- End Hero -->
