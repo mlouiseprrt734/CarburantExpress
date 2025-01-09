@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Services\FuelPriceService;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class FuelPriceController extends Controller
 {
     public function getFuelPrices()
     {
+        $user = Auth::user();
+
         // api get request
         $response = Http::get('https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records?limit=20');
 
@@ -20,19 +23,21 @@ class FuelPriceController extends Controller
             // data validation
             if (isset($data['results']) && !empty($data['results'])) {
                 $fuelPrices = $data['results'];
-                return view('welcome', ['fuelPrices' => $fuelPrices]);
+                return view('dashboard', ['fuelPrices' => $fuelPrices, 'user' => $user]);
             } else {
                 // if no data
-                return view('welcome', ['error' => 'Prix des carburants non disponible.']);
+                return view('dashboard', ['error' => 'Prix des carburants non disponible.', 'user' => $user]);
             }
         } else {
             //if request fails
-            return view('welcome', ['error' => 'Impossible d\'accéder aux données.']);
+            return view('dashboard', ['error' => 'Impossible d\'accéder aux données.', 'user' => $user]);
         }
     }
 
     public function searchFuelPrices(Request $request)
     {
+        
+        $user = Auth::user();
         $result = [];
         $ville = $request->input('ville');
         $carburant = $request->input('carburant');
@@ -77,14 +82,14 @@ class FuelPriceController extends Controller
                     }
                 }
 
-                return view('welcome', ['fuelPrices' => $result]);
+                return view('dashboard', ['fuelPrices' => $result, 'user' => $user]);
             } else {
                 // if no data
-                return view('welcome', ['error' => 'Prix des carburants non disponible.']);
+                return view('dashboard', ['error' => 'Prix des carburants non disponible.', 'user' => $user]);
             }
         } else {
             //if request fails
-            return view('welcome', ['error' => 'Impossible d\'accéder aux données.']);
+            return view('dashboard', ['error' => 'Impossible d\'accéder aux données.', 'user' => $user]);
         }
     }
 

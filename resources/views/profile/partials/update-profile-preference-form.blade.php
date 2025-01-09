@@ -25,9 +25,10 @@
                 <option>Choisissez un carburant</option>
                 <option value="1" {{ old('carburant_pref', $user->carburant_pref) == 1 ? 'selected' : '' }}>Gazole</option>
                 <option value="2" {{ old('carburant_pref', $user->carburant_pref) == 2 ? 'selected' : '' }}>SP95</option>
-                <option value="3" {{ old('carburant_pref', $user->carburant_pref) == 3 ? 'selected' : '' }}>SP98</option>
-                <option value="4" {{ old('carburant_pref', $user->carburant_pref) == 4 ? 'selected' : '' }}>GPLc</option>
-                <option value="5" {{ old('carburant_pref', $user->carburant_pref) == 5 ? 'selected' : '' }}>E85</option>
+                <option value="3" {{ old('carburant_pref', $user->carburant_pref) == 3 ? 'selected' : '' }}>E10</option>
+                <option value="4" {{ old('carburant_pref', $user->carburant_pref) == 4 ? 'selected' : '' }}>SP98</option>
+                <option value="5" {{ old('carburant_pref', $user->carburant_pref) == 5 ? 'selected' : '' }}>GPLc</option>
+                <option value="6" {{ old('carburant_pref', $user->carburant_pref) == 6 ? 'selected' : '' }}>E85</option>
             </select>
             <x-input-error class="mt-2" :messages="$errors->get('carburant_pref')" />
         </div>

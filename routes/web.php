@@ -15,8 +15,6 @@ Route::get('/mentions-legales', function () {
     return view('mentions-legales');
 });
 
-Route::get('/fuel-prices', [FuelPriceController::class, 'getFuelPrices']);
-Route::post('/recherche', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +27,9 @@ Route::middleware('auth')->group(function () {
     
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/fuel-prices', [FuelPriceController::class, 'getFuelPrices']);
+    Route::post('/recherche', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
 });
 
 require __DIR__.'/auth.php';
