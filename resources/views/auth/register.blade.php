@@ -16,9 +16,10 @@
                 <option selected>Choisissez un carburant</option>
                 <option value="1">Gazole</option>
                 <option value="2">SP95</option>
-                <option value="3">SP98</option>
-                <option value="4">GPLc</option>
-                <option value="5">E85</option>
+                <option value="3">E10</option>
+                <option value="4">SP98</option>
+                <option value="5">GPLc</option>
+                <option value="6">E85</option>
             </select>
         </div>
 

@@ -88,9 +88,11 @@
         <div id="map" style="height: 400px; width: 82%; margin-top:24px; margin-left:110px; margin-bottom:14px;">
         </div>
         <script>
+            //initialiation de la carte
             let map;
             document.addEventListener('DOMContentLoaded', function () {
                 
+                //init la carte centrée sur le premier résultat
                 map = L.map('map').setView([{{$fuelPrices[0]['geom']['lat']}}, {{$fuelPrices[0]['geom']['lon']}}], 13);
 
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -98,6 +100,7 @@
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
 
+                //ajout des markers et pop-up
                 @foreach($fuelPrices as $station)
                     var marker = L.marker(["{{$station['geom']['lat']}}", "{{$station['geom']['lon']}}"]).addTo(map);
                     marker.bindPopup("Adresse : {{$station['adresse']}}, {{$station['ville']}}").openPopup();
@@ -193,30 +196,29 @@
             </div>
         </div>
         <!-- End Tableau -->
-<!-- Pagination -->
-<div class="flex justify-center mt-4">
-    <div class="inline-flex rounded-md shadow-sm">
-        @if(isset($currentPage) && $currentPage > 1)
-            <a href="{{ route('recherche', ['page' => $currentPage - 1, 'ville' => $ville, 'carburant' => $carburant]) }}" 
-               class="px-4 py-2 bg-blue-500 text-white rounded-l-md hover:bg-blue-600">
-                Précédent
-            </a>
-        @else
-            <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-l-md">Précédent</span>
-        @endif
+        <!-- Pagination -->
+        <div class="flex justify-center mt-4">
+            <div class="inline-flex rounded-md shadow-sm">
+                @if(isset($currentPage) && $currentPage > 1)
+                    <a href="{{ route('recherche', ['page' => $currentPage - 1, 'ville' => $ville, 'carburant' => $carburant]) }}" 
+                    class="px-4 py-2 bg-blue-500 text-white rounded-l-md hover:bg-blue-600">
+                        Précédent
+                    </a>
+                @else
+                    <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-l-md">Précédent</span>
+                @endif
 
-        @if(isset($totalPages) && $currentPage < $totalPages)
-            <a href="{{ route('recherche', ['page' => $currentPage + 1, 'ville' => $ville, 'carburant' => $carburant]) }}" 
-               class="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600">
-                Suivant
-            </a>
-        @else
-            <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-r-md">Suivant</span>
-        @endif
-    </div>
-</div>
-<!-- End Pagination -->
-
+                @if(isset($totalPages) && $currentPage < $totalPages)
+                    <a href="{{ route('recherche', ['page' => $currentPage + 1, 'ville' => $ville, 'carburant' => $carburant]) }}" 
+                    class="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600">
+                        Suivant
+                    </a>
+                @else
+                    <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-r-md">Suivant</span>
+                @endif
+            </div>
+        </div>
+        <!-- End Pagination -->
     </div>
     </main>
 </x-app-layout>

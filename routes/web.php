@@ -15,9 +15,6 @@ Route::get('/mentions-legales', function () {
     return view('mentions-legales');
 });
 
-
-Route::get('dashboard', [FuelPriceController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     //gestion des préférences de l'utilisateur
@@ -26,6 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/dashboard', [FuelPriceController::class, 'index'])->name('dashboard');
+    Route::get('/fuel-prices', [FuelPriceController::class, 'getFuelPrices']);
+
+    //recherche avec pagination
     Route::post('/recherche/{page?}', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
     Route::get('/recherche/{page?}', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
 });
