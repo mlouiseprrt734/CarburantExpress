@@ -167,7 +167,7 @@
                                         }).addTo(map);
                                     });
                 
-                                    $fuelPrices.forEach(element => {
+                                    fuelPrices.forEach(element => {
                                         var marker = L.marker([element['latitude'], element['longitude']]).addTo(map);
                                     });
                                 </script>

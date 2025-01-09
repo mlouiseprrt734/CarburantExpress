@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ProfilePreferenceUpdate;
 
 class ProfileController extends Controller
 {
@@ -36,6 +38,21 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
+    /**
+     * Update the user's profile preferences.
+     */
+    public function update_preferences(ProfilePreferenceUpdate $request): RedirectResponse
+    {
+        $user = $request->user();
+        $user->ville = $request->ville;
+        $user->carburant_pref = $request->carburant_pref;
+        $request->user()->save();
+
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+    
 
     /**
      * Delete the user's account.

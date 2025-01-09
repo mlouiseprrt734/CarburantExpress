@@ -9,6 +9,26 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <!--Carburant préféré-->
+        <div>
+            <label for="carburant_pref" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Carburant préféré</label>
+            <select id="carburant_pref" name="carburant_pref" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Choisissez un carburant</option>
+                <option value="1">Gazole</option>
+                <option value="2">SP95</option>
+                <option value="3">SP98</option>
+                <option value="4">GPLc</option>
+                <option value="5">E85</option>
+            </select>
+        </div>
+
+        <!-- Ville -->
+        <div>
+            <x-input-label for="ville" :value="__('Ville')" />
+            <x-text-input id="ville" class="block mt-1 w-full" type="text" name="ville" :value="old('ville')" required autofocus autocomplete="ville" />
+            <x-input-error :messages="$errors->get('ville')" class="mt-2" />
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
