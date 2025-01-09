@@ -1,7 +1,10 @@
 # CarburantExpress
 
 Site web permettant de comparer les prix des carburants en France.
-Ce projet a été réalisé dans le cadre d'un hackathon sur 4 jours et sur un sujet tiré au sort. Il a été réalisé à l'aide d'outil d'intelligence artificielle comme un complément. 
+Ce projet a été réalisé dans le cadre d'un hackathon sur 4 jours et sur un sujet tiré au sort. 
+
+Il a été réalisé à l'aide d'outil d'intelligence artificielle comme un complément. 
+
 Ce projet a été réalisé en Laravel pour satisfaire un public large utilisant différents supports mais aussi pour avoir accès aux fonctionnalités de ce framework tel que l'authentification (Breeze) et la base de données intégrée (sqlite).
 
 ## 📋 Description
