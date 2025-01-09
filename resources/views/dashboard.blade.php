@@ -20,7 +20,7 @@
                                                     Ville
                                                 </label>
                                                 <div class="relative mt-2">
-                                                    <input type="text" name="ville" id="ville"  autocomplete="ville" class="py-3 px-4 block w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Entrez une ville"/>
+                                                    <input type="text" name="ville" id="ville"  value="{{$user->ville}}" autocomplete="ville" class="py-3 px-4 block w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Entrez une ville"/>
                                                     <span class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
                                                         <i class="fas fa-map-marker-alt"></i>
                                                     </span>
@@ -32,27 +32,27 @@
                                                 </legend>
                                                 <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="1"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="1" {{$user->carburant_pref == 1 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">Gazole</span>
                                                     </label>
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="2"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="2" {{$user->carburant_pref == 2 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">SP95</span>
                                                     </label>
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="3"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="3" {{$user->carburant_pref == 3 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">E10</span>
                                                     </label>
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="4"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="4" {{$user->carburant_pref == 4 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">SP98</span>
                                                     </label>
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="5"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="5" {{$user->carburant_pref == 5 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">GPLc</span>
                                                     </label>
                                                     <label class="flex items-center space-x-2">
-                                                        <input type="radio" name="carburant" value="6"  class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
+                                                        <input type="radio" name="carburant" value="6" {{$user->carburant_pref == 6 ? 'checked' : ''}} class="focus:ring-blue-500 text-blue-600 dark:bg-neutral-800 dark:border-neutral-700" />
                                                         <span class="text-sm text-gray-500 dark:text-neutral-400">E85</span>
                                                     </label>
                                                 </div>
@@ -82,15 +82,22 @@
                                     let map;
                                     document.addEventListener('DOMContentLoaded', function () {
                                         
-                                        ;
-                                        
-                                        map = L.map('map').setView(["{{$fuelPrices[0]['geom']['lat']}}", "{{$fuelPrices[0]['geom']['lon']}}"], 13);
+                                        map = L.map('map').setView([{{$fuelPrices[0]['geom']['lat']}}, {{$fuelPrices[0]['geom']['lon']}}], 13);
 
                                         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                             maxZoom: 19,
                                             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                         }).addTo(map);
 
+                                        @foreach($fuelPrices as $station)
+                                            var marker = L.marker(["{{$station['geom']['lat']}}", "{{$station['geom']['lon']}}"]).addTo(map);
+                                        @endforeach
+                                    });
+
+                                    document.addEventListener('click', function () {
+                                        
+                                        map = L.map('map').setView([{{$fuelPrices[0]['geom']['lat']}}, {{$fuelPrices[0]['geom']['lon']}}], 13);
+                                        
                                         @foreach($fuelPrices as $station)
                                             var marker = L.marker(["{{$station['geom']['lat']}}", "{{$station['geom']['lon']}}"]).addTo(map);
                                         @endforeach
