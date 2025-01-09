@@ -26,8 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/fuel-prices', [FuelPriceController::class, 'getFuelPrices']);
-    Route::post('/recherche', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
+    Route::post('/recherche/{page?}', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
+    Route::get('/recherche/{page?}', [FuelPriceController::class, 'searchFuelPrices'])->name('recherche');
 });
 
 require __DIR__.'/auth.php';
